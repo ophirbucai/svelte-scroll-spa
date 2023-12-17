@@ -1,12 +1,12 @@
 <script lang="ts">
-	import type { TArticle } from "../articles/article";
+	import type { TArticle } from "../assets/types/TArticle";
 	import { fade } from "svelte/transition";
 	export let article: TArticle;
 	export let isViewing: boolean;
 </script>
 
 {#if isViewing}
-	<article class="article" transition:fade={{ duration: 195, delay: 75 }}>
+	<div class="article" transition:fade={{ duration: 195, delay: 75 }}>
 		<div></div>
 		<div>
 			<hgroup>
@@ -22,7 +22,7 @@
 				<a class="pill contained large font-light" href={article.link1}>{article.text1}</a>
 			</div>
 		</div>
-	</article>
+	</div>
 {/if}
 
 <style lang="scss">

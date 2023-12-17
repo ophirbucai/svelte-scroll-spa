@@ -1,4 +1,4 @@
-import { contrastColor } from "../utils/contrastColor";
+import { contrastColor } from "../../../lib/utils/contrastColor";
 
 export const articles = [
 	{
@@ -21,7 +21,7 @@ export const articles = [
 	{
 		id: 'item2',
 		name: 'Dragon Fruit',
-		headline: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+		headline: 'Fruit of the dragon & the gods.',
 		description: "Not sure what to buy? Let us pick for you.",
 		text1: 'Order Now',
 		text2: 'Check Stock',
@@ -70,7 +70,7 @@ export const articles = [
 	{
 		id: 'item5',
 		name: 'Grape (Green)',
-		headline: 'One sugar to sweeten them all',
+		headline: 'One sugar to sweeten them all.',
 		description: "Some other description",
 		text1: 'Order Now',
 		text2: 'Learn More',
@@ -86,7 +86,7 @@ export const articles = [
 	{
 		id: 'item6',
 		name: 'Grape (Purple)',
-		headline: 'A rendition on the favorite grape',
+		headline: 'A rendition on the favorite grape.',
 		description: "Some other description",
 		text1: 'Order Now',
 		text2: 'Learn More',
@@ -103,7 +103,7 @@ export const articles = [
 	{
 		id: 'item7',
 		name: 'Cherry',
-		headline: 'Yummy cherries always come in pairs',
+		headline: 'Yummy cherries always come in pairs.',
 		description: "Some other description",
 		text1: 'Shop Now',
 		text2: '',
