@@ -39,9 +39,10 @@
           transition: background 0.3s ease-in-out;
           padding: 0.25rem 0.5rem;
           border-radius: 1rem;
+          background: rgba(0, 0, 0, 0) center center no-repeat;
         }
         &:hover:before {
-          background: rgba(0, 0, 0, 0.1) center center no-repeat;
+          background-color: rgba(0, 0, 0, 0.1);
         }
         &.active {
           &:before {
