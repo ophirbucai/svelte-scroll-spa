@@ -31,7 +31,7 @@
 		display: grid;
 		overflow-y: scroll;
 		scroll-snap-type: y mandatory;
-		//-webkit-overflow-scrolling: touch;
+		-webkit-overflow-scrolling: touch;
 		//&::-webkit-scrollbar {
 		//	display: none;
 		//}
