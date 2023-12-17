@@ -1,4 +1,4 @@
-import { contrastColor } from "../helpers/contrastColor";
+import { contrastColor } from "../utils/contrastColor";
 
 export const articles = [
 	{
@@ -12,6 +12,7 @@ export const articles = [
 		link2: 'https://github.com/ophirbucai',
 		color: 'rgb(242, 244, 27)',
 		textColor: '',
+		invertedTextColor: '',
 		attributes: [
 			{ type: "taste", name: "Sweet" },
 			{ type: "taste", name: "A Bit Sour" }
@@ -28,6 +29,7 @@ export const articles = [
 		link2: 'https://github.com/ophirbucai',
 		color: 'rgb(242, 84, 217)',
 		textColor: '',
+		invertedTextColor: '',
 		attributes: [
 			{ type: "taste", name: "Sweet" }
 		]
@@ -43,6 +45,7 @@ export const articles = [
 		link2: 'https://github.com/ophirbucai',
 		color: 'rgb(42, 84, 217)',
 		textColor: '',
+		invertedTextColor: '',
 		attributes: [
 			{ type: "taste", name: "Sweet" }
 		]
@@ -58,6 +61,7 @@ export const articles = [
 		link2: 'https://github.com/ophirbucai',
 		color: 'rgb(42, 84, 117)',
 		textColor: '',
+		invertedTextColor: '',
 		attributes: [
 			{ type: "taste", name: "Sweet" },
 			{ type: "taste", name: "Tart" }
@@ -74,6 +78,7 @@ export const articles = [
 		link2: 'https://github.com/ophirbucai',
 		color: 'rgb(42, 184, 117)',
 		textColor: '',
+		invertedTextColor: '',
 		attributes: [
 			{ type: "taste", name: "Sweet" }
 		]
@@ -89,6 +94,7 @@ export const articles = [
 		link2: 'https://github.com/ophirbucai',
 		color: 'rgb(142, 84, 117)',
 		textColor: '',
+		invertedTextColor: '',
 		attributes: [
 			{ type: "taste", name: "Sweet" },
 			{ type: "taste", name: "Sour" }
@@ -105,11 +111,13 @@ export const articles = [
 		link2: '',
 		color: 'rgb(42, 14, 17)',
 		textColor: '',
+		invertedTextColor: '',
 		attributes: [
 			{ type: "taste", name: "Sweet" },
 		]
 	},
 ].map((item) => {
 	item.textColor = contrastColor(item.color);
+	item.invertedTextColor = contrastColor(item.textColor);
 	return item;
 })

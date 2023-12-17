@@ -1,11 +1,10 @@
 <script lang="ts">
 	import type { TArticle } from "../articles/article";
-	import "../../assets/css/top-bar.scss";
 	export let articles: TArticle[];
-	export let currentArticleId: TArticle["id"];
-	$: currentTextColor = articles.find((article) => article.id === currentArticleId)?.textColor;
+	export let currentArticleId: string;
+
 </script>
-<nav style="color: {currentTextColor}" class="top-bar">
+<nav class="top-bar">
 	<ul>
 		{#each articles as article}
 			<li>
@@ -16,3 +15,4 @@
 		{/each}
 	</ul>
 </nav>
+

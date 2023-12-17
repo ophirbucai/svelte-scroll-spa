@@ -1,62 +1,53 @@
 <script lang="ts">
 	import { onMount } from "svelte";
 	import { articles } from './lib/articles';
-	import viewport from "./lib/hooks/useInViewport";
 	import Article from "./lib/components/Article.svelte";
 	import Navigation from "./lib/components/TopBar.svelte";
-	let currentArticleId: string;
-
-	function loadCurrentArticleId(): string {
-		const hash = location.hash.slice(1);
-		if (articles.map(({ id }) => id).includes(hash)) {
-			return hash;
-		} else {
-			return articles[0].id;
-		}
+	import viewport from "./lib/hooks/useInViewport";
+	import type { TArticle } from "./lib/articles/article";
+	function loadArticle(): TArticle {
+		const articleId = location.hash.slice(1);
+		return articles.find(article => article.id === articleId) || articles[0];
 	}
-
-	function scrollToArticle(smooth = true) {
-		const hash = loadCurrentArticleId();
-		if (hash === currentArticleId) return;
-		document.getElementById(hash)?.scrollIntoView({ behavior: smooth ? "smooth" : "instant" });
-	}
+	let currentArticle: TArticle = loadArticle();
 	onMount(() => {
-		scrollToArticle(false);
-
-		window.addEventListener("hashchange", () => scrollToArticle());
-
-	    return () => {
-			window.removeEventListener("hashchange", () => scrollToArticle());
+		const elArticle = document.getElementById(currentArticle.id);
+		if (elArticle) {
+			elArticle.scrollIntoView({ behavior: "instant" });
 		}
-	})
-	function updateCurrentArticleId(id: Article["id"]) {
-		currentArticleId = id;
-		location.hash = id;
-	}
-
+	});
 </script>
 
-<div class="container" style="grid-template-rows: repeat({articles.length}, 100vh)">
-	<Navigation {articles} {currentArticleId} />
+<div class="container" style="grid-template-rows: repeat({articles.length}, 100vh); color: {currentArticle?.textColor};">
+	<Navigation {articles} currentArticleId={currentArticle.id} />
 	{#each articles as article}
-		<article class="article" style="background: {article.color}" id="{article.id}" use:viewport on:inView={() => updateCurrentArticleId(article.id)}>
-			<Article {article} isViewing={article.id === currentArticleId} />
-		</article>
+		<div
+			use:viewport
+			on:inView={() => {
+				currentArticle = article;
+			}}
+			style="background-color: {article.color};"
+			id={article.id}
+		>
+			<Article {article} isViewing="{article.id === currentArticle?.id}" />
+		</div>
 	{/each}
-
 </div>
 
 <style lang="scss">
 	.container {
 		width: 100%;
 		height: 100vh;
-		overflow-y: scroll;
-		scroll-snap-type: y mandatory;
 		background: #000;
 		display: grid;
-	}
-	article.article {
-		height: 100%;
-		scroll-snap-align: start;
+		overflow-y: scroll;
+		scroll-snap-type: y mandatory;
+		//-webkit-overflow-scrolling: touch;
+		//&::-webkit-scrollbar {
+		//	display: none;
+		//}
+		& > * {
+			scroll-snap-align: start;
+		}
 	}
 </style>

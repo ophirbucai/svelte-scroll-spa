@@ -1,4 +1,4 @@
- let intersectionObserver: IntersectionObserver;
+let intersectionObserver: IntersectionObserver;
 
 function ensureIntersectionObserver() {
 	if (intersectionObserver) return;
@@ -10,8 +10,8 @@ function ensureIntersectionObserver() {
 				entry.target.dispatchEvent(new CustomEvent(eventName));
 			});
 		}, {
-			threshold: 0.5,
-			rootMargin: '-10% 0px'
+			rootMargin: '10% 0px',
+			threshold: [0.5]
 		});
 }
 
