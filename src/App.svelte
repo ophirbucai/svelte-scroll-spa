@@ -14,7 +14,7 @@
 	}
 </script>
 
-<div style="color: {currentArticle.textColor};">
+<div style="color: {currentArticle.textColor}; background-color: {currentArticle.color};">
 	<header>
 		<TopBar {articles} currentArticleId={currentArticle?.id} />
 	</header>
@@ -31,9 +31,9 @@
 		display: grid;
 		overflow-y: scroll;
 		scroll-snap-type: y mandatory;
-		-webkit-overflow-scrolling: touch;
-		&::-webkit-scrollbar {
-			display: none;
-		}
+		//-webkit-overflow-scrolling: touch;
+		//&::-webkit-scrollbar {
+		//	display: none;
+		//}
 	}
 </style>
