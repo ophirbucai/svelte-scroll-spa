@@ -14,26 +14,36 @@
 	}
 </script>
 
-<div style="color: {currentArticle.textColor}; background-color: {currentArticle.color};">
+<div class="container" style="color: {currentArticle.textColor}; background-color: {currentArticle.color};">
 	<header>
 		<TopBar {articles} currentArticleId={currentArticle?.id} />
 	</header>
-	<main class="container" style="grid-template-rows: repeat({articles.length}, 100vh);">
+	<main style="grid-template-rows: repeat({articles.length}, 100vh);">
 		<Articles {articles} currentArticle={currentArticle} {onChangeArticle} />
 	</main>
 </div>
 
 <style lang="scss">
-	main.container {
-		width: 100%;
+	.container {
+		position: relative;
 		height: 100vh;
-		background: #000;
-		display: grid;
-		overflow-y: scroll;
-		scroll-snap-type: y mandatory;
-		-webkit-overflow-scrolling: touch;
-		//&::-webkit-scrollbar {
-		//	display: none;
-		//}
+		header {
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			z-index: 1;
+		}
+		main {
+			width: 100%;
+			background: #000;
+			display: grid;
+			overflow-y: scroll;
+			scroll-snap-type: y mandatory;
+			-webkit-overflow-scrolling: touch;
+			//&::-webkit-scrollbar {
+			//	display: none;
+			//}
+		}
 	}
 </style>
