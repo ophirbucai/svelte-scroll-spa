@@ -15,7 +15,7 @@
 </script>
 
 <div style="color: {currentArticle.textColor}; background-color: {currentArticle.color};">
-	<header>
+	<header class="navigation">
 		<TopBar {articles} currentArticleId={currentArticle?.id} />
 	</header>
 	<main class="container" style="grid-template-rows: repeat({articles.length}, 100vh);">
@@ -35,5 +35,12 @@
 		//&::-webkit-scrollbar {
 		//	display: none;
 		//}
+	}
+	header.navigation {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		z-index: 100;
 	}
 </style>
